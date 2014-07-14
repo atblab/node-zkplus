@@ -24,7 +24,18 @@ test('constructor tests', function (t) {
         port: 2181
     }));
     t.ok(zkplus.createClient({
+        host: '::1',
+        port: 2181,
+        root: 'blaah'
+    }));
+    t.ok(zkplus.createClient({
         servers: ['127.0.0.1:2181']
+    }));
+    t.ok(zkplus.createClient({
+        servers: ['127.0.0.1:2181/blaah']
+    }));
+    t.ok(zkplus.createClient({
+        servers: [ { host: '127.0.0.1', port: 2181, root: 'blaah' } ]
     }));
 
     t.end();
